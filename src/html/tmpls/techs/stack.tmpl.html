@@ -1,0 +1,9 @@
+        <h4>
+            <a data-toggle="collapse" href="#techs-{{value.key}}" aria-controls="techs-{{value.key}}">{{value.key | translate}}</a>
+        </h4>
+        <ul id="techs-server-php" class="list-group collapse in" aria-labelledby="tech-server-php-header">
+            <li class="list-group-item" ng-repeat="value in value.stack" ng-if="value.stack" ng-include="'/tmpls/techs/stack.tmpl.html'">
+            </li>
+            <li class="list-group-item row" ng-repeat="value in value.stack" ng-if="value.value" ng-include="'/tmpls/techs/value.tmpl.html'" >
+            </li>
+        </ul>

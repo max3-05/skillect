@@ -1,0 +1,6 @@
+    <div style="width: 80%;float: left">{{value.key}}</div>
+    <div class="progress">
+        <div class="progress-bar progress-bar-success" ng-if="value.value > 7" aria-valuenow="{{value.value}}" style="width: {{value.value * 10}}%">{{value.value}}</div>
+        <div class="progress-bar progress-bar-warning" ng-if="value.value <= 7 && value.value > 4" aria-valuenow="{{value.value}}" style="width: {{value.value * 10}}%">{{value.value}}</div>
+        <div class="progress-bar progress-bar-danger" ng-if="value.value <= 4" aria-valuenow="{{value.value}}" style="width: {{value.value * 10}}%">{{value.value}}</div>
+    </div>

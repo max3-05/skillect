@@ -1,0 +1,68 @@
+.panel, .list-group {
+    -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
+    box-shadow: 0 0px 0px rgba(0,0,0,0);
+}
+
+.panel > .panel-heading {
+    border-bottom: 1px solid #ddd;
+}
+
+#contacts {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+#contacts a {
+    text-decoration: underline;
+    color: inherit;
+}
+
+#contacts > div {
+    display: inline-block;
+    margin-right: 33px;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.icon-skype {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-image: url("/images/skype-icon.svg");
+}
+
+#techs ul {
+    margin-bottom: 0px;
+}
+
+#techs .progress {
+    margin-bottom: 0px;
+}
+
+.projects-tech-list {
+    padding-bottom: 5px;
+}
+.projects-tech-list span {
+    font-size: 14px;
+    margin-right: 10px;
+}
+@media print  
+{
+    div, #projects li {
+        page-break-inside: avoid;
+    }
+    
+    #experience li {
+        page-break-inside: avoid;
+    }
+
+    #education li {
+        page-break-inside: avoid;
+    }
+}
+/*#techs li li div {*/
+    /*display: inline-block;*/
+/*}*/

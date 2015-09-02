@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html ng-app="skillectApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>CV - Maksym Rykin</title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="/css/cv.css" rel="stylesheet" />
+
+    <script src="/js/jquery-2.1.3.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/resume.js"></script>
+
+</head>
+<body class="col-sm-12" ng-controller="ShowResumeCtrl">
+        <h1>{{resume.name}}</h1>
+        <div id="contacts">
+            <div id="location"><span class="glyphicon glyphicon-pencil"></span>Stoykosti st. 7, Saint-Petersburg, Russia</div>
+            <div id="phone"><span class="glyphicon glyphicon-earphone"></span> <a href="tel:+79817203910">+7 (981) 720-39-10</a></div>
+            <div id="email"><span class="glyphicon glyphicon-envelope"></span> <a href="mailto:max.rykin@gmail.com">max.rykin@gmail.com</a></div>
+            <div id="skype"><span class="icon-skype"></span> <a href="skype:max3.05">max3.05</a></div>
+        </div>
+
+        <div class="panel">
+            <h2 id="statementHeader">
+                <a data-toggle="collapse" href="#statement" aria-controls="statement">
+                    Software engineer / Technical Lead
+                </a>
+            </h2>
+
+            <div id="statement" class="panel-collapse collapse in" aria-labelledby="statementHeader">
+                <div class="panel-body">
+                    <p>A result oriented software engineer with an 10 year experience of building software. Match the best appropriate solution and technologies to solve the problems proved by 10+ completed projects.</p>
+                    <p>Specialize in developing web based software using different development approaches and methodologies. Expertise in complete development lifecycle: from idea and proof of concept to documentation maintaining; from modelling to production deploying.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <h2 id="experienceHeader">
+                <a data-toggle="collapse" href="#experience" aria-controls="experience">
+                    Professional Experience
+                </a>
+            </h2>
+            <ul id="experience" class="list-group collapse in" aria-labelledby="experienceHeader">
+                <li id="experience-{{$index}}-header" class="list-group-item" ng-repeat="value in resume.experience | orderBy:'startDate':true | orderBy:'endDate':true">
+                    <div>
+                        <h4 style="display: inline-block">
+                            <a data-toggle="collapse" href="#experience-{{$index}}" aria-controls="experience-{{$index}}" style="display: inline-block;">{{value.company.title}}</a>
+                        </h4>
+                        <a href="{{value.company.website}}" style="display: inline-block;">{{value.company.website}}</a>
+                        <div style="margin-bottom: 10px; margin-top: 10px; float: right;"><span>{{value.startDate | date}}</span>&nbsp;&mdash;&nbsp;<span>{{value.endDate | date}}</span></div>
+                        <div>{{value.position}}</div>
+                    </div>
+                    <div id="experience-{{$index}}" class="list-group collapse in" aria-labelledby="experience-{{$index}}-header">
+                        Accomplishments:
+                        <ul>
+                            <li ng-repeat="accomplishment in value.accomplishments" ng-bind-html="renderHtml(accomplishment)">
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="panel">
+            <h2 id="projectsHeader">
+                <a data-toggle="collapse" href="#projects" aria-controls="projects">
+                    Projects
+                </a>
+            </h2>
+            <ul id="projects" class="list-group collapse in" aria-labelledby="projectsHeader">
+                <li id="projects-{{$index}}-header" class="list-group-item" ng-repeat="value in resume.projects | filter: techFilter | orderBy:'startDate':true | orderBy:'endDate':true">
+                    <div style="overflow: hidden">
+                        <h4 style="float: left">
+                            <a data-toggle="collapse" href="{{value.url}}" aria-controls="projects-{{$index}}" style="display: inline-block;" ng-if="value.url">{{value.title}}</a>
+                            <a data-toggle="collapse" href="#projects-{{$index}}" aria-controls="projects-{{$index}}" style="display: inline-block;" ng-if="!value.url">{{value.title}}</a>
+                        </h4>
+                        <!-- <a href="{{value.url}}" style="display: inline-block;">{{value.url}}</a> -->
+                        <div style="margin-bottom: 10px; margin-top: 10px; float: right;"><span>{{value.startDate | date}}</span>&nbsp;&mdash;&nbsp;<span>{{value.endDate | date}}</span></div>
+                    </div>
+		    <div style="clear: both"></div>
+                    <div id="project-techs-{{$index}}" class="projects-tech-list">
+                        <span class="label label-primary" ng-repeat="tech in value.techs">{{tech}}</span>
+                    </div>
+
+                    <div id="project-desc-{{$index}}" class="list-group collapse in" aria-labelledby="experience-{{$index}}-header">
+                        <div ng-bind-html="renderHtml(value.description)"></div>
+
+                        <b>Accomplishments:</b>
+                        <ul>
+                            <li ng-repeat="accomplishment in value.accomplishments">
+                                {{accomplishment}}
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="panel">
+            <h2 id="educationHeader">
+                <a data-toggle="collapse" href="#education" aria-control="education">
+                     Education
+                </a>
+            </h2>
+            <ul id="education" class="list-group collapse in" aria-labelledby="educationHeader">
+                <li id="education-{{$index}}-header" class="list-group-item" ng-repeat="value in resume.education | orderBy:'startDate':true | orderBy:'endDate':true">
+                    <div>
+                        <h4 style="display: inline-block">
+                            <a data-toggle="collapse" href="#projects-{{$index}}" aria-controls="projects-{{$index}}" style="display: inline-block;">{{value.title}}</a>
+                        </h4>
+                        <div style="margin-bottom: 10px; margin-top: 10px; float: right;"><span>{{value.startDate | date}}</span>&nbsp;&mdash;&nbsp;<span>{{value.endDate | date}}</span></div>
+                        <div>{{value.degree}}</div>
+                    </div>
+
+                    <div id="education-desc-{{$index}}" class="list-group collapse in" aria-labelledby="education-{{$index}}-header">
+                        
+                        <b>Activities:</b>
+                        <ul>
+                            <li ng-repeat="activity in value.activities">
+                                {{activity}}
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="panel">
+            <h2 id="certificatesHeader">
+                <a data-toggle="collapse" href="#certificates" aria-control="certificates">
+                     Certificates
+                </a>
+            </h2>
+            <ul id="certificates" class="list-group collapse in" aria-labelledby="certificatesHeader">
+                <li id="certificate-{{$index}}-header" class="list-group-item" ng-repeat="value in resume.certificates">
+                    <div style="overflow: hidden">
+                        <h4 style="float: left">
+                            <a data-toggle="collapse" href="{{value.url}}" aria-controls="projects-{{$index}}" style="display: inline-block;" ng-if="value.url">{{value.title}}</a>
+                        </h4>
+                        <div style="margin-bottom: 10px; margin-top: 10px; float: right;"><span>{{value.startDate | date}}</span></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>
