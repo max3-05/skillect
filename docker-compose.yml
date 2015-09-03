@@ -1,0 +1,10 @@
+nginx:
+  build: ./etc/nginx
+  ports:
+   - "80:80"
+  volumes_from:
+   - frontend
+frontend:
+  image: debian:jessie
+  volumes:
+   - ./src/html:/var/www/skillect

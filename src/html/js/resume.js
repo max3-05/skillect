@@ -27,7 +27,6 @@ skillectApp.filter('translate', ['$rootScope', function($rootScope) {
 skillectApp.controller('ShowResumeCtrl', function ($scope, $sce) {
     $scope.search = {
         "techs": [
-            "PHP"
         ]
     };
 
@@ -37,6 +36,10 @@ skillectApp.controller('ShowResumeCtrl', function ($scope, $sce) {
     };
 
     $scope.techFilter = function(item) {
+        if ($scope.search.techs.length == 0) {
+            return true;
+        }
+        
         for(i = 0; i < $scope.search.techs.length; i++) { 
             if (item.techs.indexOf($scope.search.techs[i]) != -1) {
                 return true;
