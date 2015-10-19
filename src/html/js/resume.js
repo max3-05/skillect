@@ -229,6 +229,20 @@ skillectApp.controller('ShowResumeCtrl', function ($scope, $sce) {
 
         "experience": [
             {
+                "position": "Senior Developer",
+                "company": {
+                    "title": "AdServer",
+                    "website": "https://propellerads.com/"
+                },
+                "description": "",
+                "startDate":    new Date("2015-04-06"),
+                "endDate":      null,
+                "accomplishments": [
+                    "Developed few projects to boost managers effeciency",
+                    "Made technical documentation. Described system domain and dataflow"
+                ],
+            },
+            {
                 "position": "Consultant",
                 "company": {
                     "title": "Business Link International Inc.",
@@ -577,7 +591,36 @@ skillectApp.controller('ShowResumeCtrl', function ($scope, $sce) {
                 "accomplishments": [
                     "Standardized SharePoint solution creation steps and automated them"
                 ]
-            }
+            },
+            {
+                "title": "Dashboards for advertisment optimisers",
+                "url": "",
+                "startDate": new Date("2015-07-01"),
+                "endDate":  new Date("2015-10-15"),
+                "description": "Dashboards provides analytical information to managers to assist them in making desicions about advertisment optimization without needs in other interfaces.",
+                "techs": [
+                    "NodeJS", "JSON", "REST", "Docker"
+                ],
+                "accomplishments": [
+                    "Provided single UI for all data needed for manager to make decisions",
+                    "Extended API of internal products to follow SOA principles"
+                ]
+            },
+            {
+                "title": "System description",
+                "url": "",
+                "startDate": new Date("2015-05-01"),
+                "endDate":  new Date("2015-11-01"),
+                "description": "This project intent to provide technical overview of the system in different points of view, such as domain's entities, components, dataflows and so on.",
+                "techs": [
+                    "UML", "Visual Paradigm"
+                ],
+                "accomplishments": [
+                    "Made the glossary of terms for all developer and managers across the company",
+                    "Found some flaws of architecture that were very expensive for maintenance"
+                ]
+            },
+
         ],
 
         "education": [
