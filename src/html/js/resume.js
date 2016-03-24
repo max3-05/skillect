@@ -27,6 +27,7 @@ skillectApp.filter('translate', ['$rootScope', function($rootScope) {
 skillectApp.controller('ShowResumeCtrl', function ($scope, $sce) {
     $scope.search = {
         "techs": [
+        
         ]
     };
 
@@ -236,9 +237,9 @@ skillectApp.controller('ShowResumeCtrl', function ($scope, $sce) {
                 },
                 "description": "",
                 "startDate":    new Date("2015-04-06"),
-                "endDate":      null,
+                "endDate":      new Date("2015-10-22"),
                 "accomplishments": [
-                    "Developed few projects to boost managers effeciency",
+                    "Designed and developed a few projects to boost managers effeciency",
                     "Made technical documentation. Described system domain and dataflow"
                 ],
             },
@@ -652,6 +653,11 @@ skillectApp.controller('ShowResumeCtrl', function ($scope, $sce) {
                 "title": "Brainbench: OO Concepts Master",
                 "startDate": new Date("2013-11-07"),
                 "url": "http://maxrykin.com/wp-content/uploads/2013/12/OO-Concept-Certificate.pdf"
+            },
+            {
+                "title": "Zend Certified PHP Engineer",
+                "startDate": new Date("2015-11-03"),
+                "url": "https://www.zend.com/en/yellow-pages/ZEND027989"
             }
         ]
     };

@@ -49,9 +49,10 @@ h1, h2 {
     font-size: 14px;
     margin-right: 10px;
 }
+
 @media print  
 {
-    div, #projects li {
+    div.one-page, #projects li {
         page-break-inside: avoid;
     }
     
